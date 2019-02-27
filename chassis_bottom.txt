@@ -1,0 +1,20 @@
+    # def tx_callback(self, data):
+    #     try:
+    #         message = self.db.encode_mssage()
+    #     except KeyError:
+    #             return
+
+def main():
+
+    cp = can_parser()
+    rospy.init_node('chassis_can_parser', anonymous=False)
+
+    rate = rospy.Rate(50) # 50hz
+    while not rospy.is_shutdown():
+	cp.cdata.header.stamp = rospy.Time.now()
+        rospy.loginfo(cp.cdata)
+        cp.rx_pub.publish(cp.cdata)
+        rate.sleep()
+
+if __name__ == '__main__':
+	main()
