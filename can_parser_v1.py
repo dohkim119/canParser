@@ -1,60 +1,16 @@
 #!/usr/bin/env python
 # coding: utf-8
 import pandas as pd
-from config import *
-from parsingVariable import *
+import sys
+from mobileye_config import *
 
-#csvData = pd.read_csv(csvFileName)
-#can_id_list = csvData['ID'].values.tolist()
-#can_id = list(set(can_id_list))
-#id_length = len(can_id)
-#col_length = len(csvData.columns)
-
-
-def createHeader(script):
-
-    # parsing envHeader
-    script.writelines(envHeader)
-    script.writelines('\n')
-
-    # parsing Libraries
-    for num in range(len(Libraries)):
-        script.writelines(msgHeaderImport)
-        script.writelines(space)
-        script.write(Libraries[num])
-        script.writelines('\n')
-
-    # parsing Message package and type
-    msg = pd.DataFrame(Message, columns=['msgPackage', 'msgType'])
-
-    for msgNum in range(len(msg)):
-        script.writelines(msgHeaderFrom)
-        script.writelines(space)
-        script.writelines(msg.loc[msgNum].msgPackage)
-        script.writelines(space)
-        script.writelines(msgHeaderImport)
-        script.writelines(space)
-        script.writelines(msg.loc[msgNum].msgType)
-        script.writelines(space)
-        script.writelines('\n')
-    script.writelines('\n\n')
-
-def createClass(script):
+csvData = pd.read_csv(sys.argv[1])
+can_id_list = csvData['ID'].values.tolist()
+can_id = list(set(can_id_list))
+id_length = len(can_id)
+col_length = len(csvData.columns)
 
 
-
-def main ():
-    script = open(parserName, 'w')
-    createHeader(script)
-    createClass(script)
-
-if __name__ == '__main__':
-	main()
-
-
-
-
-"""
 i = 1
 
 for i in range(len(can_id)):
@@ -122,7 +78,6 @@ f.close()
 
 script.close()
 
-"""
 
 
 
