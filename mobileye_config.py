@@ -34,3 +34,10 @@ rate = '30'
 isMultipleLogInfo = True # True / False
 
 logInfo = ['left_lane', 'right_lane']
+
+
+
+
+
+
+
