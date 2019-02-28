@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 import pandas as pd
-from mobileye_config import *
+from config import *
 from parsingVariable import *
 
 
